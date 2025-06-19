@@ -1,6 +1,5 @@
 import React from 'react';
 import { Navbar } from '../components/Navbar';
-import { EnhancedThreeBackground } from '../components/EnhancedThreeBackground';
 import { GraduationCap, Award, BookOpen, Calendar, MapPin, Star, Trophy } from 'lucide-react';
 
 const Education = () => {
@@ -75,7 +74,7 @@ const Education = () => {
 
   return (
     <div className="relative min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white overflow-x-hidden">
-      <EnhancedThreeBackground />
+      {/* Removed <EnhancedThreeBackground /> to eliminate the 3D sphere/circle background */}
       
       {/* Gradient Overlays */}
       <div className="fixed inset-0 pointer-events-none">

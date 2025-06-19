@@ -1,6 +1,5 @@
 import React from 'react';
 import { Navbar } from '../components/Navbar';
-import { EnhancedThreeBackground } from '../components/EnhancedThreeBackground';
 import { Mail, Phone, MapPin, Send, Linkedin, Github, Instagram, Facebook, Twitter, MessageSquare, Clock, CheckCircle } from 'lucide-react';
 
 const Contact = () => {
@@ -108,7 +107,7 @@ const Contact = () => {
 
   return (
     <div className="relative min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white overflow-x-hidden">
-      <EnhancedThreeBackground />
+      {/* Removed <EnhancedThreeBackground /> to eliminate the 3D sphere/circle background */}
       
       {/* Gradient Overlays */}
       <div className="fixed inset-0 pointer-events-none">

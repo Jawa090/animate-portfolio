@@ -1,20 +1,20 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Suspense, lazy } from "react";
 
 // Import all pages directly for instant loading
 import Index from "./pages/Index";
-import Home from "./pages/Home";
+const Home = lazy(() => import("./pages/Home"));
 import EnhancedAbout from "./pages/EnhancedAbout";
-import Education from "./pages/Education";
-import WorkExperience from "./pages/WorkExperience";
-import Projects from "./pages/Projects";
+const Education = lazy(() => import("./pages/Education"));
+const WorkExperience = lazy(() => import("./pages/WorkExperience"));
+const Projects = lazy(() => import("./pages/Projects"));
 import Certifications from "./pages/Certifications";
-import Contact from "./pages/Contact";
-import NotFound from "./pages/NotFound";
+const Contact = lazy(() => import("./pages/Contact"));
+const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -32,19 +32,21 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/about" element={<EnhancedAbout />} />
-          <Route path="/education" element={<Education />} />
-          <Route path="/experience" element={<WorkExperience />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/certifications" element={<Certifications />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
+      <Router>
+        <Suspense fallback={<div>Loading...</div>}>
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/about" element={<EnhancedAbout />} />
+            <Route path="/education" element={<Education />} />
+            <Route path="/experience" element={<WorkExperience />} />
+            <Route path="/projects" element={<Projects />} />
+            <Route path="/certifications" element={<Certifications />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </Suspense>
+      </Router>
     </TooltipProvider>
   </QueryClientProvider>
 );

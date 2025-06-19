@@ -1,7 +1,5 @@
-
 import React from 'react';
 import { Navbar } from '../components/Navbar';
-import { ThreeBackground } from '../components/ThreeBackground';
 import { Code, Cpu, Palette, MapPin, GraduationCap, Target, Zap, Brain, Rocket } from 'lucide-react';
 
 const About = () => {
@@ -38,7 +36,6 @@ const About = () => {
 
   return (
     <div className="relative min-h-screen bg-black text-white overflow-x-hidden font-poppins">
-      <ThreeBackground />
       <div className="relative z-10">
         <Navbar />
         
